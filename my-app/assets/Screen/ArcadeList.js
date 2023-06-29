@@ -81,11 +81,11 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
   },
   globalSearchText: {
-    color: "black",
+    color: "#6F6B65",
     fontSize: 10,
   },
   title: {
-    color: "black",
+    color: "#6F6B65",
     fontSize: 16,
     fontWeight: "bold",
     marginBottom: 16,
