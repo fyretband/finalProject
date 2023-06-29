@@ -8,6 +8,7 @@ import LoginScreen from "./assets/Screen/LoginScreen";
 import AppNavigator from "./assets/router/AppNavigator";
 import HomeScreen from "./assets/Screen/HomeScreen";
 import RegisterScreen from "./assets/Screen/RegisterScreen";
+import ArcadeList from "./assets/Screen/ArcadeList";
 
 const Tab = createBottomTabNavigator();
 
@@ -50,6 +51,7 @@ function App() {
           <Tab.Screen name="Home" component={HomeScreen} />
           <Tab.Screen name="Login" component={LoginScreen} />
           <Tab.Screen name="Register" component={RegisterScreen} />
+          <Tab.Screen name="ArcadeList" component={ArcadeList} />
         </Tab.Navigator>
       </NavigationContainer>
     </GestureHandlerRootView>

@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
-
+import { PressStart2P_400Regular } from '@expo-google-fonts/press-start-2p';
+import { useFonts } from 'expo-font';
 function LoginScreen() {
+ 
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,19 +18,24 @@ function LoginScreen() {
     // Handle Google login logic
   };
 
-  const handleFacebookLogin = () => {
-    // Handle Facebook login logic
-  };
+  const [fontsLoaded] = useFonts({
+    PressStart2P_400Regular,
+  });
 
+  
+  if (!fontsLoaded) {
+    return null; 
+  }
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <Image source={require('../arcade.png')} style={styles.image} />
-        <Text style={styles.title}>Login</Text>
+        <Image source={require('../icon/arcadeIcon.png')} style={styles.image} />
+        <Text style={[styles.title, { fontFamily: 'PressStart2P_400Regular' }]}>Login</Text>
+  
         <View style={styles.inputContainer}>
           <Ionicons name="mail" size={24} color="gray" style={styles.icon} />
           <TextInput
-            style={styles.input}
+            style={[styles.input, { fontFamily: 'PressStart2P_400Regular' }]}
             placeholder="Email"
             value={email}
             onChangeText={setEmail}
@@ -38,7 +45,7 @@ function LoginScreen() {
         <View style={styles.inputContainer}>
           <Ionicons name="lock-closed" size={24} color="gray" style={styles.icon} />
           <TextInput
-            style={styles.input}
+            style={[styles.input, { fontFamily: 'PressStart2P_400Regular' }]}
             placeholder="Password"
             value={password}
             onChangeText={setPassword}
@@ -46,19 +53,15 @@ function LoginScreen() {
           />
         </View>
         <TouchableOpacity style={styles.button} onPress={handleViewMenu}>
-          <Text style={styles.buttonText}>Login</Text>
+          <Text style={[styles.buttonText, { fontFamily: 'PressStart2P_400Regular' }]}>Login</Text>
         </TouchableOpacity>
-        <Text style={styles.orText}>Or</Text>
+        <Text style={[styles.orText, { fontFamily: 'PressStart2P_400Regular' }]}>Or</Text>
         <TouchableOpacity style={styles.socialButton} onPress={handleGoogleLogin}>
           <Ionicons name="logo-google" size={24} color="white" style={styles.socialIcon} />
-          <Text style={styles.socialButtonText}>Login with Google</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.socialButton} onPress={handleFacebookLogin}>
-          <Ionicons name="logo-facebook" size={24} color="white" style={styles.socialIcon} />
-          <Text style={styles.socialButtonText}>Login with Facebook</Text>
+          <Text style={[styles.socialButtonText, { fontFamily: 'PressStart2P_400Regular' }]}>Login with Google</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-          <Text style={styles.signupText}>Not a member? Sign up</Text>
+          <Text style={[styles.signupText, { fontFamily: 'PressStart2P_400Regular' }]}>New To Us? Register</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -77,13 +80,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   image: {
-    width: 200,
+    width: 400,
     height: 200,
     marginBottom: 20,
   },
   title: {
     fontSize: 24,
     marginBottom: 10,
+    color: '#FEF9F4'
   },
   inputContainer: {
     flexDirection: 'row',
@@ -114,35 +118,39 @@ const styles = StyleSheet.create({
   socialButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#3b5998',
+    backgroundColor: 'white',
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 15,
     marginTop: 10,
   },
   buttonText: {
-    color: 'white',
+    color: '#6F6B65',
     fontSize: 16,
     fontWeight: 'bold',
+   
   },
   orText: {
     marginTop: 10,
     fontSize: 16,
     fontWeight: 'bold',
+    color: '#6F6B65'
   },
   socialIcon: {
     marginRight: 10,
+    color: '#0F9D58',
+    
   },
   socialButtonText: {
-    color: 'white',
+    color: '#6F6B65',
     fontSize: 16,
     fontWeight: 'bold',
     marginLeft: 10,
   },
   signupText: {
     marginTop: 10,
-    color: 'blue',
-    textDecorationLine: 'underline',
+    color: '#6F6B65'
+    
   },
 });
 
